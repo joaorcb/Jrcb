@@ -4,4 +4,4 @@
 
 Isto é um site teste. Mais em breve!
 
-Glória a Deus
+Glória a Deus!
