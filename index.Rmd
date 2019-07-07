@@ -1,0 +1,14 @@
+---
+title: "My Website"
+---
+    
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+
+<img src="C:\\Users\\JRCD\\Downloads\\3e02fca6-598b-4f20-a24d-a7f974eb6f02.png" style="width:25%; border:10px solid; margin-right: 20px" align="left">
+
+
+Hello, Website! Welcome to the world.
+
+My full CV is available [here](C:\\Users\\JRCD\\Dropbox\\cv_pse.pdf).
+
