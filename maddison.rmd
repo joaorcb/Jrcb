@@ -1,5 +1,5 @@
 ---
-title: "gganimate and maddison"
+title: "GDP per Cap visualization with Maddison and gganimate"
 author: "João Rebouças"
 date: "7 de julho de 2019"
 output: html_document
@@ -9,8 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+This is a quick blog showing how to create animated graphs with R and gganimate.
 
-```{r}
+First, lets load some packages and define our theme using the ggtheme package for ggplot. 
+
+```{r message=FALSE, warning=FALSE}
 library(maddison)
 library(tidyverse)
 library(directlabels)
@@ -22,7 +25,17 @@ library(png)
 library(ggthemes)
 theme_set(theme_economist())
 
-head(maddison)
+```
+
+Now, let's see our data... and subset what we want
+
+```{r message=FALSE, warning=FALSE}
+
+glimpse(maddison)
+
+```
+
+```{r message=FALSE, warning=FALSE}
 
 dados <- subset(maddison, 
                 year >= as.Date("1800-01-01"))
@@ -37,6 +50,15 @@ projeto <- dados_tibble %>%
 projeto_2 <- projeto %>% 
   filter(is.na(gdp_pc)==F, is.na(iso3c) ==F, is.na(continent)==F,
          is.na(year)==F, year >= 1500) 
+
+head(projeto_2)
+
+```
+
+Selecionando alguns países...
+
+
+```{r message=FALSE, warning=FALSE}
 
 paises <-  c("Russia", "Venezuela", "Iraq", "Myanmar", "Sudan",
                    "Afghanistan", "Congo", "Greece", "Argentina", "Brazil",
@@ -56,7 +78,13 @@ projeto_3 <- projeto_2 %>%
   projeto_4 <- projeto_2 %>% 
     filter(country %in% paises) 
     
-  
+```
+
+
+Finalmente rodando nosso gráfico!
+
+```{r message=FALSE, warning=FALSE}
+
   p3 <-     ggplot(projeto_4) +
     aes(x = year, y = gdp_pc, colour = country) +
     geom_line(size = 1L) +
@@ -69,8 +97,15 @@ projeto_3 <- projeto_2 %>%
   
   p4 <- direct.label(p3,"last.bumpup")
   
-  p4 + transition_reveal(year)
+anim <-   p4 + transition_reveal(year)
 
   
+```
+
+finalmente nosso grafico!!
+
+```{r message=FALSE, warning=FALSE}
+anim 
+
 ```
 

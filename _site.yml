@@ -14,5 +14,8 @@ navbar:
       href: http://github.com/joaorcb
     - icon: fa-linkedin fa-lg
       href: https://www.linkedin.com/in/jo%C3%A3o-rebou%C3%A7as-castello-branco-37371bb1/
-
+output:
+  html_document:
+    theme: paper
+    css: 'styles.css'
 ---
